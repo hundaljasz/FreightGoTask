@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Dapp University HD Task | FreightGo</title> 
+    
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<style>
+    *{
+        font-family: sans-serif;
+    }
+    ul {
+  list-style-type: none;
+ }
+ #completedTaskList .content {
+        color: grey;
+        
+      }
+ form{
+     padding-left: 40px;
+ }
+    h1{
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items:center ;
+        padding:30px;
+        font-size: 1.2rem;
+    }
+  
+    div#list{
+        background-color: bisque;
+        height: 300px;
+        width: 500px;
+        border-radius: 20px;
+    }
+    .hide{
+        display: none;
+    }
+    #account{
+        position: absolute;
+        right:60px;
+    }
+    #loader{
+        background-color:cadetblue;
+        width: 30px;
+        height: 30px;
+        animation: load 3s linear infinite ;
+    }
+    @keyframes load {
+        0%{
+            transform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+        
+    }
+    /* #list div{
+        height: 100%;
+        width: 100%;
+        display: block;
+    } */
+
+    /* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+    
+</style>
+<body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/" target="_blank">Dapp University HD Task | FreightGo</a>
+        <ul class="navbar-nav px-3">
+          <li class="nav-item text-nowrap d-none d-sm-none d-sm-block">
+            <small><a class="nav-link" href="#"><span id="account"></span></a></small>
+          </li>
+        </ul>
+      </nav>
+    <div>
+        <h3 id="account"></h3>
+
+    </div>
+    
+    </h3>
+    <div>
+        <div id = "loader"></div>
+        <br><br><br><br><br>
+            <div id="list" class="container" style="display: none;">
+                <h2>Add Order Details</h1>
+                    <form onsubmit="App.createOrder(); return false;">
+                        <div class="form-group">
+                            <label for="name">Customer Name:</label>
+                            <input id="name" type="text" placeholder="Add Customer Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Customer Address:</label>
+                            <input id="address" type="text" placeholder="Add Customer Address">
+                        </div>
+                        <div class="form-group">
+                            <label for="number">Customer Number:</label>
+                            <input id="number" type="phone" placeholder="Add Customer Number">
+                        </div>
+                        <input type="submit" hidden="">
+                    </form>
+            </div>
+            <div class="container">
+                <div class="row" id = "taskList" style="display: none;">
+                    <h1>Pending Orders</h1>
+                    <div class="column" id="taskTemplate">
+                    <div class="card" style="display: none;">
+                        <h3 class="content"></h3>
+                        <p class="address"></p>
+                        <p class="number"></p>
+                        <button class="btn btn-success">Complete Order</button>
+                    </div>
+                    </div>
+                </div>
+                <div class="row" id="completedTaskList">
+                    <h1>Completed Orders</h1>
+                </div>
+            </div>
+          
+        
+    </div>
+    
+    
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="vendors/@truffle/contract/dist/truffle-contract.min.js"></script>
+    <script src="vendors/web3/dist/web3.min.js"></script>  
+    <script src="app.js"></script>
+</html>
